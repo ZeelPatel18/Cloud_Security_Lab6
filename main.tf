@@ -85,3 +85,9 @@ resource "aws_s3_bucket_policy" "example_bucket_policy" {
 }
           
 data "aws_caller_identity" "current" {}
+
+resource "aws_iam_role_policy_attachment" "detach_example_attachment" {
+  role         = aws_iam_role.example_role.name
+  policy_arn   = aws_iam_role_policy_attachment.example_attachment.policy_arn
+  force_detach = true
+}
